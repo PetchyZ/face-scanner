@@ -36,7 +36,7 @@ def admin_panel(page: Page):
             file_full_model = ps.get_full_model_path()
             loaded_model = pickle.load(open(file_full_model, 'rb'))
             out_encoder = LabelEncoder()
-            out_encoder.classes_ = np.load(ps.get_classes_path())
+            out_encoder.classes_ = np.load('./Model/Exported_model/' + 'classes_full_face.npy')
             myclient = pymongo.MongoClient(r"mongodb+srv://parit:132456@cluster1.gktrrcl.mongodb.net/?retryWrites=true&w=majority")
             mydb = myclient["Face_recognition_project"]
 
@@ -1658,16 +1658,18 @@ def admin_panel(page: Page):
                                     content=Divider(),
                                     margin=margin.only(left=15,right=20)
                                 ),
-                                Container(    
-                                    content=Column(
-                                        
-                                    ),
-                                    alignment=alignment.center,
+                                Container(
+                                    content=detect_lv,
+                                    border_radius=border_radius.all(20),
+                                    margin=margin.only(left=18),
+                                    bgcolor="#D4F4FF",
+                                    width=680,
+                                    height=440,
                                 )
                         ]),
                     alignment=alignment.center,
                     bgcolor=colors.WHITE,
-                    width=740,
+                    width=720,
                     height=560,
                     border_radius=border_radius.all(20),
                     margin=margin.only(top=10,bottom=10,left=15)
@@ -1684,8 +1686,9 @@ def admin_panel(page: Page):
                                     content=Divider(),
                                     margin=margin.only(left=15,right=20)
                                 ),
+                                
                                 Container(    
-                                    content= get_criminal(),
+                                    content=get_criminal(),
                                     height=380,
                                     alignment=alignment.center,
                                 ),
@@ -1697,12 +1700,11 @@ def admin_panel(page: Page):
                                         disabled=page.web,
                                     ),
                                     alignment=alignment.center,
-                                    margin=margin.only(top=10)
                                 ),
                             ]),
                         alignment=alignment.center,
                         bgcolor=colors.WHITE,
-                        width=250,
+                        width=275,
                         height=560,
                         border_radius=border_radius.all(20),
                         margin=margin.only(top=10,right=10,bottom=10)

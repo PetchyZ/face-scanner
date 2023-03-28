@@ -47,12 +47,6 @@ def get_ready():
     if os.listdir(dir):
         for f in os.listdir(dir):
             os.remove(os.path.join(dir,f))
-    
-    #model
-    dir = ps.get_exported_model_folder()
-    if os.listdir(dir):
-        for f in os.listdir(dir):
-            os.remove(os.path.join(dir,f))
 
     #get data
     download_face_criminals()

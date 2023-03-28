@@ -37,7 +37,7 @@ def user_panel(page: Page):
             file_full_model = ps.get_full_model_path()
             loaded_model = pickle.load(open(file_full_model, 'rb'))
             out_encoder = LabelEncoder()
-            out_encoder.classes_ = np.load(ps.get_classes_path())
+            out_encoder.classes_ = np.load('./Model/Exported_model/' + 'classes_full_face.npy')
             myclient = pymongo.MongoClient(r"mongodb+srv://parit:132456@cluster1.gktrrcl.mongodb.net/?retryWrites=true&w=majority")
             mydb = myclient["Face_recognition_project"]
 
