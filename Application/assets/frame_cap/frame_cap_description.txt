@@ -1,0 +1,2 @@
+frame cap folder will contain all frame that capture from camera,
+and it will reset everytime you open application.
