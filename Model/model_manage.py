@@ -311,6 +311,10 @@ def test_full_image(image_path,model_path):
 		for face in location:
 			face_pixels = extract_face(image,face['box'])
 	else:
+		pyplot.title(label="Model can't find face position.")
+		image_show = mpimg.imread(image_show)
+		pyplot.imshow(image_show)
+		pyplot.show()
 		print("Can't detect faces")
 	# test model on a random example from the test dataset
 	face_emb = fp.get_embedding(model, face_pixels)
@@ -346,11 +350,16 @@ def test_half_image(image_path,model_path):
 	detector = MTCNN()
 	image = cv2.imread(image_show)
 	location = detector.detect_faces(image)
+	print(location)
 	if len(location) > 0:
 		for face in location:
 			face_pixels = extract_face(image,face['box'])
 	else:
-		print("Can't detect faces")
+		pyplot.title(label="Model can't find face position.")
+		image_show = mpimg.imread(image_show)
+		pyplot.imshow(image_show)
+		pyplot.show()
+		return False
 	# test model on a random example from the test dataset
 	face_emb = fp.get_embedding(model, face_pixels)
 	samples = np.expand_dims(face_emb, axis=0)
