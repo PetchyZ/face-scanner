@@ -38,10 +38,7 @@ def get_ready():
     #clear data
     #frame cap
     dir = ps.get_frame_cap_path()
-    if os.listdir(dir): 
-        for f in os.listdir(dir):
-            if f != 'frame_cap_description.txt':
-                os.remove(os.path.join(dir, f))
+    clear_frame_cap()
     
     #criminal images
     dir = ps.get_assets_folder() + "criminal_images/"
@@ -60,7 +57,8 @@ def clear_frame_cap():
     dir = ps.get_frame_cap_path()
     if os.listdir(dir): 
         for f in os.listdir(dir):
-            os.remove(os.path.join(dir, f))
+            if f != 'frame_cap_description.txt':
+                os.remove(os.path.join(dir, f))
     else:
         print("frame_cap is empty.")
 
